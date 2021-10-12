@@ -1,0 +1,57 @@
+gains:
+  jright_shoulder_rotz: {p: 1000.0, i: 0.0, d: 1.0, i_clamp: 0}
+  jright_shoulder_roty: {p: 1000.0, i: 0.0, d: 1.0, i_clamp: 0}
+  jright_shoulder_rotx: {p: 1000.0, i: 0.0, d: 1.0, i_clamp: 0}
+  jright_forearm_rotz: {p: 100.0, i: 0.0, d: 0.0, i_clamp: 0}
+  jright_forearm_roty: {p: 100.0, i: 0.0, d: 0.0, i_clamp: 0}
+  jright_wrist_roty: {p: 10.0, i: 0.0, d: 0.0, i_clamp: 0}
+  jright_wrist_rotx: {p: 10.0, i: 0.0, d: 0.0, i_clamp: 0}  
+  jright_grip_rhand: {p: 500.0, i: 0.0, d: 1.0, i_clamp: 0} 
+
+  jleft_shoulder_rotz: {p: 1000.0, i: 0.0, d: 1.0, i_clamp: 0}
+  jleft_shoulder_roty: {p: 1000.0, i: 0.0, d: 1.0, i_clamp: 0}
+  jleft_shoulder_rotx: {p: 1000.0, i: 0.0, d: 1.0, i_clamp: 0}
+  jleft_forearm_rotz: {p: 100.0, i: 0.0, d: 0.0, i_clamp: 0}
+  jleft_forearm_roty: {p: 100.0, i: 0.0, d: 0.0, i_clamp: 0}
+  jleft_wrist_roty: {p: 10.0, i: 0.0, d: 0.0, i_clamp: 0}
+  jleft_wrist_rotx: {p: 10.0, i: 0.0, d: 0.0, i_clamp: 0}  
+  jright_grip_lhand: {p: 500.0, i: 0.0, d: 1.0, i_clamp: 0} 
+
+
+#  jright_shoulder: {p: 1000, i: 0, d: 1, i_clamp: 0}
+#  jright_upper_arm: {p: 1000, i: 0, d: 1, i_clamp: 0}
+#  jright_forearm: {p: 1000, i: 0, d: 1, i_clamp: 0}
+#  jright_forearm_rotz: {p: 100, i: 0, d: 0, i_clamp: 0}
+#  jright_forearm_roty: {p: 100, i: 0, d: 0, i_clamp: 0}
+#  jright_wrist_rotz: {p: 10, i: 0, d: 0, i_clamp: 0}
+#  jright_wrist_rotx: {p: 10, i: 0, d: 0, i_clamp: 0}  
+#  jright_grip_rhand: {p: 500, i: 0, d: 1, i_clamp: 0}  
+  
+
+#  jleft_shoulder: {p: 1000, i: 0, d: 1, i_clamp: 0}
+#  jleft_upper_arm: {p: 1000, i: 0, d: 1, i_clamp: 0}
+#  jleft_forearm: {p: 1000, i: 0, d: 1, i_clamp: 0}
+#  jleft_forearm_rotz: {p: 100, i: 0, d: 0, i_clamp: 0}
+#  jleft_forearm_roty: {p: 100, i: 0, d: 0, i_clamp: 0}
+#  jleft_wrist_rotz: {p: 10, i: 0, d: 0, i_clamp: 0}
+#  jleft_wrist_rotx: {p: 10, i: 0, d: 0, i_clamp: 0}  
+#  jright_grip_lhand: {p: 500, i: 0, d: 1, i_clamp: 0}    
+
+#  jright_shoulder_rotz: {p: 1000.0, i: 0.0, d: 1.0, i_clamp: 0}
+#  jright_shoulder_roty: {p: 1000.0, i: 0.0, d: 1.0, i_clamp: 0}
+#  jright_shoulder_rotx: {p: 1000.0, i: 0.0, d: 1.0, i_clamp: 0}
+#  jright_forearm_rotz: {p: 100.0, i: 0.0, d: 0.0, i_clamp: 0}
+#  jright_forearm_roty: {p: 100.0, i: 0.0, d: 0.0, i_clamp: 0}
+#  jright_wrist_rotz: {p: 10.0, i: 0.0, d: 0.0, i_clamp: 0}
+#  jright_wrist_rotx: {p: 10.0, i: 0.0, d: 0.0, i_clamp: 0}  
+#  jright_grip_rhand: {p: 500.0, i: 0.0, d: 1.0, i_clamp: 0} 
+
+#  arm_right_1_joint: {p: 3000, d: 5, i: 1,   i_clamp: 3, torque_clamp: 60}
+#  arm_right_2_joint: {p: 3000, d: 5, i: 1,   i_clamp: 3, torque_clamp: 50}
+#  arm_right_3_joint: {p: 3000, d: 5, i: 1,   i_clamp: 3, torque_clamp: 50}
+#  arm_right_4_joint: {p: 3000, d: 5, i: 1,   i_clamp: 3, torque_clamp: 50}
+#  arm_right_5_joint: {p: 500,  d: 1, i: 0.1, i_clamp: 3, torque_clamp: 50}
+#  arm_right_6_joint: {p: 500,  d: 1, i: 0.1, i_clamp: 3, torque_clamp: 50}
+#  arm_right_7_joint: {p: 500,  d: 1, i: 0.1, i_clamp: 3, torque_clamp: 50}
+
+

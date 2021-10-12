@@ -1,0 +1,55 @@
+# Publish all joint states
+joint_state_controller:
+  type: "joint_state_controller/JointStateController"
+  publish_rate: 50
+
+# Control all joints
+arm_controller:
+  type: "position_controllers/JointTrajectoryController"
+  joints:
+    - jright_shoulder_rotz
+    - jright_shoulder_roty
+    - jright_shoulder_rotx
+    - jright_forearm_rotz
+    - jright_forearm_roty
+    - jright_wrist_rotz
+    - jright_wrist_rotx
+
+  constraints: 
+      goaltime: 0.5
+      stopped_velocity_tolerance: 0.02
+      jright_shoulder_rotz: {trajectory: 0.1, goal: 0.0}
+      jright_shoulder_roty: {trajectory: 0.1, goal: 0.0}
+      jright_shoulder_rotx: {trajectory: 0.1, goal: 0.0}
+      jright_forearm_rotz: {trajectory: 0.1, goal: 0.0}
+      jright_forearm_roty: {trajectory: 0.1, goal: 0.0}
+      jright_wrist_rotz: {trajectory: 0.1, goal: 0.0}
+      jright_wrist_rotx: {trajectory: 0.1, goal: 0.0}
+#  gains:
+#    jright_shoulder_rotz: {p: 100.0, i: 0.01, d: 10.0, i_clamp: 1}
+#    jright_shoulder_roty: {p: 100.0, i: 0.01, d: 10.0, i_clamp: 1}
+#    jright_shoulder_rotx: {p: 100.0, i: 0.01, d: 10.0, i_clamp: 1}
+#    jright_forearm_rotz: {p: 100.0, i: 0.01, d: 10.0, i_clamp: 1}
+#    jright_forearm_roty: {p: 100.0, i: 0.01, d: 10.0, i_clamp: 1}
+#    jright_wrist_rotz: {p: 100.0, i: 0.01, d: 10.0, i_clamp: 1}
+#    jright_wrist_rotx: {p: 100.0, i: 0.01, d: 10.0, i_clamp: 1}
+
+#  stop_trajectory_duration: 0.5
+#  state_publish_rate: 25
+#  action_monitor_rate: 10
+      
+gripper_controller:
+  type: "position_controllers/JointTrajectoryController"
+  joints:
+    - jright_grip_rhand
+
+  constraints: 
+      goaltime: 0.5
+      stopped_velocity_tolerance: 0.02
+      jright_grip_rhand: {trajectory: 0.1, goal: 0.0}
+#  gains:  
+#    jright_grip_rhand: {p: 100.0, i: 0.01, d: 10.0, i_clamp: 1}
+
+#  stop_trajectory_duration: 0.5
+#  state_publish_rate: 25
+#  action_monitor_rate: 10

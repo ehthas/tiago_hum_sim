@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+
+  <arg name="gzpose" default="-x 0 -y 0 -z 0.0 -R 0.0 -P 0.0 -Y 0.0"/>
+  <arg name="multi" default=""/>
+  <arg name="model_name" default="mhuman"/>
+
+   
+  <rosparam ns="/mhuman" param="type">"mhuman"</rosparam> 
+
+  <!-- Load Controllers pid gains-->
+
+  <rosparam command="load" file="$(find tiago_hum_sim)/config/human_compcontrollers.yaml" ns="/mhuman"/> 
+  <rosparam command="load" file="$(find tiago_hum_sim)/config/pids_chmodel.yaml" ns="/mhuman"/> 
+<!--   <group ns="/mhuman">  -->
+  <node name="hum_controller_spawner" pkg="controller_manager" type="spawner"  
+        respawn="false" output="screen" ns="/mhuman" 
+        args="--namespace=/mhuman joint_state_controller right_arm_controller right_gripper_controller left_arm_controller left_gripper_controller"/> 
+<!--  </group> -->
+ 
+  <!-- Robot model -->
+  <include file="$(find tiago_hum_sim)/launch/upload_chum.launch">
+    <arg name="multi"  value="$(arg multi)"/>
+  </include>
+
+  <!-- Spawn robot in Gazebo -->
+  <node pkg="gazebo_ros" type="spawn_model" name="spawn_model"
+    args="-urdf -param robot_description $(arg gzpose) -model $(arg model_name)" />
+
+
+</launch>

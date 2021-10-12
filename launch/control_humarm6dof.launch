@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+
+        <!-- Robot Model -->   
+        <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find tiago_hum_sim)/urdf/humarm_6dof.xacro'" /> 
+        
+        <arg name="x" default="0"/>
+        <arg name="y" default="0"/>
+        <arg name="z" default="0"/>
+  
+
+        <!-- Spawn the robot model -->
+        <node name="mhuman_spawn" pkg="gazebo_ros" type="spawn_model"  output="screen"  
+              args="-urdf -param robot_description -model mhuman -x $(arg x) -y $(arg y) -z $(arg z)" /> 
+
+        <!-- Load Controllers -->
+        <rosparam command="load" file="$(find tiago_hum_sim)/config/humarm_6dofcontrollers.yaml" ns="/mhuman"/> 
+        <rosparam command="load" file="$(find tiago_hum_sim)/config/pids_hhmodel.yaml" ns="/mhuman"/> 
+        <!-- Controllers -->
+        <node name="controller_spawner" pkg="controller_manager" type="spawner"  
+              respawn="false" output="screen" ns="/mhuman" 
+              args="--namespace=/mhuman joint_state_controller arm_controller gripper_controller">
+               
+        </node> 
+
+
+</launch>

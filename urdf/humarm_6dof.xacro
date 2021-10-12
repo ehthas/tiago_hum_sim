@@ -1,0 +1,1039 @@
+<?xml version="1.0" ?>
+
+<robot name="mhuman" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+   <link name="world"/>    
+
+   <joint name="jdummy" type="fixed">
+     <parent link="world"/>
+     <child link="right_foot"/>
+   </joint> 
+   
+   <!-- Lower Body pelvis and both legs and feet -->
+
+   <link name="right_foot">
+
+        <inertial>
+          <mass value="0.8086"/>
+          <origin xyz="0.08991 0 0.03925" rpy="0 0 0" />
+          <inertia ixx="0.00079209" iyy="0.0025944" izz="0.0025558" ixy="0" ixz="0" iyz="0"/>
+        </inertial>
+
+        <collision>
+          <origin xyz="0.08991 0 0.03925" rpy="0 0 0" />
+          <geometry>
+             <box size="0.17983    0.074775    0.078509"/>
+          </geometry>
+        </collision>
+
+        <visual>
+          <origin xyz="0.08991 0 0.03925" rpy="0 0 0" />   
+          <geometry>
+             <box size="0.17983    0.074775    0.078509"/>
+          </geometry>
+        </visual>
+
+   </link> 
+
+   <joint name="jright_ankle" type="fixed">
+<!--     <axis xyz="0 1 0"/>
+     <limit effort="30" velocity="1.0" lower="-1.5" upper="1.5" />   -->
+     <origin xyz="0.018694 0 0.078509" rpy="0 0 0"/>
+     <parent link="right_foot"/>
+     <child link="right_lower_leg"/>
+   </joint>
+
+<!--   <transmission name="trans_jright_ankle">
+     <type>transmission_interface/SimpleTransmission</type>
+     <joint name="jright_ankle">
+       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+     </joint>
+     <actuator name="motor_jright_ankle">
+       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+       <mechanicalReduction>1</mechanicalReduction>
+     </actuator>
+   </transmission> -->
+   
+   <link name="right_lower_leg">
+
+        <inertial>
+          <mass value="2.2703"/>
+          <origin xyz="0.018694 0 0.20304" rpy="0 0 0" />
+          <inertia ixx="0.031992" iyy="0.031992" izz="0.0015867" ixy="0" ixz="0" iyz="0"/>
+        </inertial>
+
+        <collision>
+          <origin xyz="0.018694 0 0.20304" rpy="0 0 0" />
+          <geometry>
+             <cylinder length="0.40608" radius="0.037388"/>
+          </geometry>
+        </collision>
+
+        <visual>
+          <origin xyz="0.018694 0 0.20304" rpy="0 0 0" />   
+          <geometry>
+             <cylinder length="0.40608" radius="0.037388"/>
+          </geometry>
+        </visual>
+   </link>
+
+   <joint name="jright_knee" type="fixed">
+<!--     <axis xyz="0 1 0"/>
+     <limit effort="30" velocity="1.0" lower="-1.5" upper="1.5" /> -->
+     <origin xyz="0.018694 0 0.40608" rpy="0 0 0"/>
+     <parent link="right_lower_leg"/>
+     <child link="right_upper_leg"/>
+   </joint>
+
+<!--   <transmission name="trans_jright_knee">
+     <type>transmission_interface/SimpleTransmission</type>
+     <joint name="jright_knee">
+       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+     </joint>
+     <actuator name="motor_jright_knee">
+       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+       <mechanicalReduction>1</mechanicalReduction>
+     </actuator>
+   </transmission>
+-->
+   <link name="right_upper_leg">
+
+        <inertial>
+          <mass value="7.775"/>
+          <origin xyz="0.018694 0 0.22449" rpy="0 0 0" />
+          <inertia ixx="0.13681" iyy="0.13681" izz="0.01241" ixy="0" ixz="0" iyz="0"/>
+        </inertial>
+
+        <collision>
+          <origin xyz="0.018694 0 0.22449" rpy="0 0 0" />
+          <geometry>
+             <cylinder length="0.44898" radius="0.0565"/>
+          </geometry>
+        </collision>
+
+        <visual>
+          <origin xyz="0.018694 0 0.22449" rpy="0 0 0" />   
+          <geometry>
+             <cylinder length="0.44898" radius="0.0565"/>
+          </geometry>
+        </visual>
+   </link>
+
+   <joint name="jright_hip" type="fixed">
+<!--     <axis xyz="0 1 0"/>
+     <limit effort="30" velocity="1.0" lower="-1.5" upper="1.5" /> -->
+     <origin xyz="0.018694 0 0.44898" rpy="0 0 0"/>
+     <parent link="right_upper_leg"/>
+     <child link="pelvis"/>
+   </joint>
+
+<!--   <transmission name="trans_jright_hip">
+     <type>transmission_interface/SimpleTransmission</type>
+     <joint name="jright_hip">
+       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+     </joint>
+     <actuator name="motor_jright_hip">
+       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+       <mechanicalReduction>1</mechanicalReduction>
+     </actuator>
+   </transmission>
+-->
+   <link name="pelvis">
+
+        <inertial>
+          <mass value="4.976"/>
+          <origin xyz="0 -0.062285 0.0487345" rpy="0 0 0" />
+          <inertia ixx="0.029678" iyy="0.011854" izz="0.033653" ixy="0" ixz="0" iyz="0"/>
+        </inertial>
+
+        <collision>
+          <origin xyz="0 -0.062285 0.0487345" rpy="0 0 0" />
+          <geometry>
+             <box size="0.13815     0.24914    0.097469"/>
+          </geometry>
+        </collision>
+
+        <visual>
+          <origin xyz="0 -0.062285 0.0487345" rpy="0 0 0" />   
+          <geometry>
+             <box size="0.13815     0.24914    0.097469"/>
+          </geometry>
+        </visual>
+
+   </link>
+
+   <joint name="jleft_hip" type="fixed">
+<!--     <axis xyz="0 1 0"/>
+     <limit effort="30" velocity="1.0" lower="-1.5" upper="1.5" />  -->
+     <origin xyz="0 -0.118785 0" rpy="0 0 0"/>
+     <parent link="pelvis"/>
+     <child link="left_upper_leg"/>
+   </joint>
+<!--
+   <transmission name="trans_jleft_hip">
+     <type>transmission_interface/SimpleTransmission</type>
+     <joint name="jleft_hip">
+       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+     </joint>
+     <actuator name="motor_jleft_hip">
+       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+       <mechanicalReduction>1</mechanicalReduction>
+     </actuator>
+   </transmission>
+-->
+   <link name="left_upper_leg">
+
+        <inertial>
+          <mass value="7.775"/>
+          <origin xyz="0 -0.005785 -0.22449" rpy="0 0 0" />
+          <inertia ixx="0.13681" iyy="0.13681" izz="0.01241" ixy="0" ixz="0" iyz="0"/>
+        </inertial>
+
+        <collision>
+          <origin xyz="0 -0.005785 -0.22449" rpy="0 0 0" />
+          <geometry>
+             <cylinder length="0.44898" radius="0.0565"/>
+          </geometry>
+        </collision>
+
+        <visual>
+          <origin xyz="0 -0.005785 -0.22449" rpy="0 0 0" />   
+          <geometry>
+             <cylinder length="0.44898" radius="0.0565"/>
+          </geometry>
+        </visual>
+
+   </link>
+
+   <joint name="jleft_knee" type="fixed">
+ <!--     <axis xyz="0 1 0"/>
+     <limit effort="30" velocity="1.0" lower="-1.5" upper="1.5" /> -->
+     <origin xyz="-0.018694 0 -0.44898" rpy="0 0 0"/>
+     <parent link="left_upper_leg"/>
+     <child link="left_lower_leg"/>
+   </joint>
+<!--
+   <transmission name="trans_jleft_knee">
+     <type>transmission_interface/SimpleTransmission</type>
+     <joint name="jleft_knee">
+       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+     </joint>
+     <actuator name="motor_jleft_knee">
+       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+       <mechanicalReduction>1</mechanicalReduction>
+     </actuator>
+   </transmission>
+-->
+   <link name="left_lower_leg">
+
+        <inertial>
+          <mass value="2.2703"/>
+          <origin xyz="0 -0.005785 -0.20304" rpy="0 0 0" />
+          <inertia ixx="0.031992" iyy="0.031992" izz="0.0015867" ixy="0" ixz="0" iyz="0"/>
+        </inertial>
+
+        <collision>
+          <origin xyz="0 -0.005785 -0.20304" rpy="0 0 0" />
+          <geometry>
+             <cylinder length="0.40608" radius="0.037388"/>
+          </geometry>
+        </collision>
+
+        <visual>
+          <origin xyz="0 -0.005785 -0.20304" rpy="0 0 0" />   
+          <geometry>
+             <cylinder length="0.40608" radius="0.037388"/>
+          </geometry>
+        </visual>
+
+   </link>
+
+   <joint name="jleft_ankle" type="fixed">
+<!--     <axis xyz="0 1 0"/>
+     <limit effort="30" velocity="1.0" lower="-1.5" upper="1.5" /> -->
+     <origin xyz="-0.018694 0 -0.40608" rpy="0 0 0"/>
+     <parent link="left_lower_leg"/>
+     <child link="left_foot"/>
+   </joint>
+
+<!--   <transmission name="trans_jleft_ankle">
+     <type>transmission_interface/SimpleTransmission</type>
+     <joint name="jleft_ankle">
+       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+     </joint>
+     <actuator name="motor_jleft_ankle">
+       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+       <mechanicalReduction>1</mechanicalReduction>
+     </actuator>
+   </transmission>  -->
+
+   <link name="left_foot">
+
+        <inertial>        
+           <mass value="0.8086"/>
+           <origin xyz="0.071216 -0.005785 -0.03925" rpy="0 0 0" />
+           <inertia ixx="0.00079209" iyy="0.0025944" izz="0.0025558" ixy="0" ixz="0" iyz="0"/>
+        </inertial>
+
+        <collision>
+          <origin xyz="0.071216 -0.005785 -0.03925" rpy="0 0 0" />
+          <geometry>
+             <box size="0.17983    0.074775    0.078509"/>
+          </geometry>
+        </collision>
+        
+        <visual>
+          <origin xyz="0.071216 -0.005785 -0.03925" rpy="0 0 0" />   
+          <geometry>
+             <box size="0.17983    0.074775    0.078509"/>
+          </geometry>
+        </visual>
+
+   </link>
+
+  
+<!-- Upper Body from pelvis to head without arms -->
+   <!--   <link name="pelvis">
+        <visual>
+          <origin xyz="0 -0.062285 0.0487345" rpy="0 0 0" />   
+          <geometry>
+             <box size="0.13815     0.24914    0.097469"/>
+          </geometry>
+        </visual>
+    </link> -->
+
+   <!-- Joint b/w pelvis and Link L5 -->
+   <joint name="jtrunk_bottom" type="fixed">  
+<!--     <axis xyz="0 1 0"/>
+     <limit effort="30" velocity="1.0" lower="-1.5" upper="1.5" /> -->
+     <origin xyz="0 -0.062285 0.095104" rpy="0 0 0"/>
+     <parent link="pelvis"/>
+     <child link="trunk_bottom"/>
+   </joint>
+<!--
+   <transmission name="trans_jtrunk_bottom">
+     <type>transmission_interface/SimpleTransmission</type>
+     <joint name="jtrunk_bottom">
+       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+     </joint>
+     <actuator name="motor_jtrunk_bottom">
+       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+       <mechanicalReduction>1</mechanicalReduction>
+     </actuator>
+   </transmission>
+-->
+   
+    <!-- Link L5 -->
+    <link name="trunk_bottom">   
+
+        <inertial>        
+           <mass value="6.3444"/>
+           <origin xyz="0 0 0.047552" rpy="0 0 0" />
+           <inertia ixx="0.018868" iyy="0.014872" izz="0.024177" ixy="0" ixz="0" iyz="0"/>
+        </inertial>
+
+        <collision>
+          <origin xyz="0 0 0.047552" rpy="0 0 0" />
+          <geometry>
+             <box size="0.13815     0.16323    0.095104"/>
+          </geometry>
+        </collision>
+
+        <visual>
+          <origin xyz="0 0 0.047552" rpy="0 0 0" />   
+          <geometry>
+             <box size="0.13815     0.16323    0.095104"/>
+          </geometry>
+        </visual>
+   </link>
+
+
+   <!-- Joint b/w pelvis and Link L3 -->
+   <joint name="jtrunk_center" type="fixed">  
+ <!--    <axis xyz="0 1 0"/>
+     <limit effort="30" velocity="1.0" lower="-1.5" upper="1.5" /> -->
+     <origin xyz="0 0 0.095104" rpy="0 0 0"/>
+     <parent link="trunk_bottom"/>
+     <child link="trunk_center"/>
+   </joint>
+<!--
+   <transmission name="trans_jtrunk_center">
+     <type>transmission_interface/SimpleTransmission</type>
+     <joint name="jtrunk_center">
+       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+     </joint>
+     <actuator name="motor_jtrunk_center">
+       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+       <mechanicalReduction>1</mechanicalReduction>
+     </actuator>
+   </transmission>
+-->
+   <!-- Link L3 -->
+   <link name="trunk_center">   
+
+        <inertial>        
+           <mass value="6.3444"/>
+           <origin xyz="0 0 0.042958" rpy="0 0 0" />
+           <inertia ixx="0.017989" iyy="0.013993" izz="0.024177" ixy="0" ixz="0" iyz="0"/>
+        </inertial>
+
+        <collision>
+          <origin xyz="0 0 0.042958" rpy="0 0 0" />
+          <geometry>
+             <box size="0.13815     0.16323    0.095104"/>
+          </geometry>
+        </collision>
+
+        <visual>
+          <origin xyz="0 0 0.042958" rpy="0 0 0" />   
+          <geometry>
+             <box size="0.13815     0.16323    0.085916"/>
+          </geometry>
+        </visual>
+   </link>
+
+     <!-- Joint b/w pelvis and Link T12 -->   
+     <joint name="jtrunk_ptop" type="fixed">  
+ <!--    <axis xyz="0 1 0"/>
+     <limit effort="30" velocity="1.0" lower="-1.5" upper="1.5" /> -->
+     <origin xyz="0 0 0.085916" rpy="0 0 0"/>
+     <parent link="trunk_center"/>
+     <child link="trunk_ptop"/>
+   </joint>
+<!--
+   <transmission name="trans_jtrunk_ptop">
+     <type>transmission_interface/SimpleTransmission</type>
+     <joint name="jtrunk_ptop">
+       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+     </joint>
+     <actuator name="motor_jtrunk_ptop">
+       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+       <mechanicalReduction>1</mechanicalReduction>
+     </actuator>
+   </transmission>
+  -->
+     <!-- Link T12 -->
+    <link name="trunk_ptop">   
+
+        <inertial>        
+           <mass value="6.3444"/>
+           <origin xyz="0 0 0.042958" rpy="0 0 0" />
+           <inertia ixx="0.017989" iyy="0.013993" izz="0.024177" ixy="0" ixz="0" iyz="0"/>
+        </inertial>
+
+        <collision>
+          <origin xyz="0 0 0.042958" rpy="0 0 0" />
+          <geometry>
+             <box size="0.13815     0.16323    0.085916"/>
+          </geometry>
+        </collision>
+
+        <visual>
+          <origin xyz="0 0 0.042958" rpy="0 0 0" />   
+          <geometry>
+             <box size="0.13815     0.16323    0.085916"/>
+          </geometry>
+        </visual>
+   </link>
+
+   <!-- Joint b/w pelvis and Link T8 -->
+   <joint name="jtrunk_top" type="fixed">  
+  <!--   <axis xyz="0 1 0"/>
+     <limit effort="30" velocity="1.0" lower="-1.5" upper="1.5" /> -->
+     <origin xyz="0 0 0.085916" rpy="0 0 0"/>
+     <parent link="trunk_ptop"/>
+     <child link="trunk_top"/>
+   </joint>
+<!--
+   <transmission name="trans_jtrunk_top">
+     <type>transmission_interface/SimpleTransmission</type>
+     <joint name="jtrunk_top">
+       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+     </joint>
+     <actuator name="motor_jtrunk_top">
+       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+       <mechanicalReduction>1</mechanicalReduction>
+     </actuator>
+   </transmission>
+-->
+   <!-- Link T8 -->
+   <link name="trunk_top">   
+
+        <inertial>        
+           <mass value="2.488"/>
+           <origin xyz="0 0 0.059875" rpy="0 0 0" />
+           <inertia ixx="0.0035473" iyy="0.0067278" izz="0.0043289" ixy="0" ixz="0" iyz="0"/>
+        </inertial>
+
+        <collision>
+          <origin xyz="0 0 0.059875" rpy="0 0 0" />
+          <geometry>
+             <box size="0.13457    0.052626     0.11975"/>
+          </geometry>
+        </collision>
+
+        <visual>
+          <origin xyz="0 0 0.059875" rpy="0 0 0" />   
+          <geometry>
+             <box size="0.13457    0.052626     0.11975"/>
+          </geometry>
+        </visual>
+   </link>
+
+   <joint name="jneck" type="fixed"> 
+<!--     <axis xyz="0 1 0"/>    
+     <limit effort="30" velocity="1.0" lower="-1.5" upper="1.5" />  -->
+     <origin xyz="0 0 0.11975" rpy="0 0 0"/>
+     <parent link="trunk_top"/>
+     <child link="neck"/>
+   </joint>
+<!--
+   <transmission name="trans_jneck">
+     <type>transmission_interface/SimpleTransmission</type>
+     <joint name="jneck">
+       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+     </joint>
+     <actuator name="motor_jneck">
+       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+       <mechanicalReduction>1</mechanicalReduction>
+     </actuator>
+   </transmission>
+-->   
+   <link name="neck">  
+
+        <inertial>        
+           <mass value="0.7464"/>
+           <origin xyz="0 0 0.044626" rpy="0 0 0" />
+           <inertia ixx="0.0006461" iyy="0.0006461" izz="0.00030124" ixy="0" ixz="0" iyz="0"/>
+        </inertial>
+
+        <collision>
+          <origin xyz="0 0 0.044626" rpy="0 0 0" />
+          <geometry>
+             <cylinder length="0.089252" radius="0.014205"/>
+          </geometry>
+        </collision>
+
+        <visual>
+          <origin xyz="0 0 0.044626" rpy="0 0 0" />   
+          <geometry>
+             <cylinder length="0.089252" radius="0.014205"/>
+          </geometry>
+        </visual>
+   </link>
+
+   <joint name="jhead" type="fixed"> 
+<!--     <axis xyz="0 1 0"/>
+     <limit effort="30" velocity="1.0" lower="-1.5" upper="1.5" /> -->
+     <origin xyz="0 0 0.089252" rpy="0 0 0"/>
+     <parent link="neck"/>
+     <child link="head"/>
+   </joint>
+<!--   
+   <transmission name="trans_jhead">
+     <type>transmission_interface/SimpleTransmission</type>
+     <joint name="jhead">
+       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+     </joint>
+     <actuator name="motor_jhead">
+       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+       <mechanicalReduction>1</mechanicalReduction>
+     </actuator>
+   </transmission>
+-->
+   <link name="head">
+
+        <inertial>        
+           <mass value="2.2392"/>
+           <origin xyz="0 0 0.0445025" rpy="0 0 0" />
+           <inertia ixx="0.0070955" iyy="0.0070955" izz="0.0070955" ixy="0" ixz="0" iyz="0"/>
+        </inertial>
+
+        <collision>
+          <origin xyz="0 0 0.0445025" rpy="0 0 0" />
+          <geometry>
+             <sphere radius="0.089005"/>
+          </geometry>
+        </collision>
+
+          <visual>
+          <origin xyz="0 0 0.0445025" rpy="0 0 0" />   
+          <geometry>
+             <sphere radius="0.089005"/>
+          </geometry>
+        </visual>
+   </link>
+
+   <!--  Links from Right shoulder to hand-->
+
+<!--    <link name="trunk_top">   Link T8 
+        <visual>
+          <origin xyz="0 0 0.059875" rpy="0 0 0" />   
+          <geometry>
+             <box size="0.13457    0.052626     0.11975"/>
+          </geometry>
+        </visual>
+   </link> -->
+
+   <joint name="jright_shoulder" type="fixed">  
+<!--     <axis xyz="0 1 0"/>
+     <limit effort="30" velocity="1.0" lower="-1.5708" upper="1.5708" />   -->
+       <origin xyz="0 0.026313 0.059875" rpy="0 0 0"/>
+     <parent link="trunk_top"/>
+     <child link="right_shoulder"/>
+   </joint>
+<!--
+   <transmission name="trans_jright_shoulder">
+     <type>transmission_interface/SimpleTransmission</type>
+     <joint name="jright_shoulder">
+       <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+     </joint>
+     <actuator name="motor_jright_shoulder">
+       <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+       <mechanicalReduction>1</mechanicalReduction>
+     </actuator>
+   </transmission>
+-->   
+   <link name="right_shoulder">  
+
+        <inertial>        
+           <mass value="1.9282"/>
+           <origin xyz="0 0.065235 0" rpy="1.5708 0 0" />
+           <inertia ixx="0.0030029" iyy="0.00053578" izz="0.0030029" ixy="0" ixz="0" iyz="0"/>
+        </inertial>
+
+        <collision>
+          <origin xyz="0 0.065235 0" rpy="1.5708 0 0" />
+          <geometry>
+             <cylinder length="0.13047" radius="0.023574"/>
+          </geometry>
+        </collision>
+
+        <visual>
+          <origin xyz="0 0.065235 0" rpy="1.5708 0 0" />   
+          <geometry>
+             <cylinder length="0.13047" radius="0.023574"/>
+          </geometry>
+        </visual>
+   </link>
+
+<!--   ***************changes made with dummy link and joints at shoulder start ********************************   -->
+
+    <joint name="jright_shoulder_rotz" type="revolute">
+        <origin xyz="0    0.13047           0" rpy="0 0 0"/>
+        <parent link="right_shoulder"/>
+        <child link="right_upper_arm_f1"/>
+<!--        <dynamics damping="0.1" friction="0.0"/>    -->
+<!--        <limit effort="30" velocity="1.0" lower="-2.35619" upper="1.5708" />
+        <axis xyz="1 0 0" />  -->
+        <limit effort="80" velocity="1.0" lower="-0.785398" upper="1.5708" />
+        <axis xyz="0 0 1" />    
+    </joint>
+
+   <transmission name="trans_jright_shoulder_rotz">
+     <type>transmission_interface/SimpleTransmission</type>
+     <joint name="jright_shoulder_rotz">
+       <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+     </joint>
+     <actuator name="motor_jright_shoulder_rotz">
+       <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+       <mechanicalReduction>1</mechanicalReduction>
+     </actuator>
+   </transmission>
+
+    <link name="right_upper_arm_f1">
+        <inertial>
+            <mass value="0.0001"/>
+            <origin xyz="0 0.065235 0" rpy="1.5708 0 0" />
+            <inertia ixx="0.0003" iyy="0.0003" izz="0.0003" ixy="0" ixz="0" iyz="0"/>
+        </inertial>
+    </link>
+    
+    <joint name="jright_shoulder_roty" type="revolute">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <parent link="right_upper_arm_f1"/>
+        <child link="right_upper_arm_f2"/>
+<!--        <dynamics damping="0.1" friction="0.0"/>  -->
+        <limit effort="80" velocity="1.0" lower="-1.5708" upper="1.5708" />
+        <axis xyz="0 1 0" />
+    </joint>
+
+   <transmission name="trans_jright_shoulder_roty">
+     <type>transmission_interface/SimpleTransmission</type>
+     <joint name="jright_shoulder_roty">
+       <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+     </joint>
+     <actuator name="motor_jright_shoulder_roty">
+       <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+       <mechanicalReduction>1</mechanicalReduction>
+     </actuator>
+   </transmission>
+	
+    <link name="right_upper_arm_f2">
+        <inertial>
+            <mass value="0.0001"/>
+            <origin xyz="0 0.065235 0" rpy="1.5708 0 0" />
+            <inertia ixx="0.0003" iyy="0.0003" izz="0.0003" ixy="0" ixz="0" iyz="0"/>
+        </inertial>
+    </link>
+    
+    <joint name="jright_shoulder_rotx" type="revolute">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <parent link="right_upper_arm_f2"/>
+        <child link="right_upper_arm"/>
+ <!--       <dynamics damping="0.1" friction="0.0"/>    -->
+        <limit effort="80" velocity="1.0" lower="-1.5708" upper="0.5236" />
+        <axis xyz="1 0 0" />  
+<!--        <limit effort="30" velocity="1.0" lower="-0.785398" upper="3.14159" />
+        <axis xyz="0 0 1" />    -->
+    </joint>
+
+   <transmission name="trans_jright_shoulder_rotx">
+     <type>transmission_interface/SimpleTransmission</type>
+     <joint name="jright_shoulder_rotx">
+       <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+     </joint>
+     <actuator name="motor_jright_shoulder_rotx">
+       <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+       <mechanicalReduction>1</mechanicalReduction>
+     </actuator>
+   </transmission>
+
+
+
+<!--   ***************changes made with dummy link and joints at shoulder end *********************************   -->
+
+
+<!--
+   <joint name="jright_upper_arm" type="revolute"> 
+     <axis xyz="1 0 0"/>
+     <limit effort="30" velocity="1.0" lower="0" upper="1.5708" />
+     <origin xyz="0 0.13047 0" rpy="-1.5708 0 0"/>
+     <parent link="right_shoulder"/>
+     <child link="right_upper_arm"/>
+   </joint>
+   <transmission name="trans_jright_upper_arm">
+     <type>transmission_interface/SimpleTransmission</type>
+     <joint name="jright_upper_arm">
+       <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+     </joint>
+     <actuator name="motor_jright_upper_arm">
+       <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+       <mechanicalReduction>1</mechanicalReduction>
+     </actuator>
+   </transmission>
+   -->
+   <link name="right_upper_arm">
+
+        <inertial>        
+           <mass value="1.866"/>
+           <origin xyz="0 0.13497 0" rpy="1.5708 0 0" />
+           <inertia ixx="0.011736" iyy="0.00080917" izz="0.011736" ixy="0" ixz="0" iyz="0"/>
+        </inertial>
+
+        <collision>
+          <origin xyz="0 0.13497 0" rpy="1.5708 0 0" />
+          <geometry>
+             <cylinder length="0.26994" radius="0.029449"/>
+          </geometry>
+        </collision>
+  
+        <visual>
+          <origin xyz="0 0.13497 0" rpy="1.5708 0 0" />   
+          <geometry>
+             <cylinder length="0.26994" radius="0.029449"/>
+          </geometry>
+        </visual>
+   </link>
+
+   <joint name="jright_forearm_rotz" type="revolute"> 
+     <axis xyz="0 0 1"/>
+     <limit effort="50" velocity="1.0" lower="-2.5307" upper="0" />
+     <origin xyz="0 0.26994 0" rpy="0 0 0"/>
+     <parent link="right_upper_arm"/>
+     <child link="right_forearm_f1"/>
+   </joint>
+
+   <transmission name="trans_jright_forearm_rotz">
+     <type>transmission_interface/SimpleTransmission</type>
+     <joint name="jright_forearm_rotz">
+       <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+     </joint>
+     <actuator name="motor_jright_forearm_rotz">
+       <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+       <mechanicalReduction>1</mechanicalReduction>
+     </actuator>
+   </transmission>
+<!-- **************** changes made with dummy link and joints at elbow start ***************************  -->
+<!--    <joint name="jright_forearm_roty" type="revolute">
+        <origin xyz="0    -0.26994           0" rpy="0 0 0"/>
+        <parent link="right_upper_arm"/>
+        <child link="right_forearm_f1"/>
+        <dynamics damping="0.1" friction="0.0"/>   
+        <limit effort="30" velocity="1.0" lower="-1.5708" upper="1.48353" />
+        <axis xyz="0 1 0" />
+    </joint>
+-->
+    
+    <link name="right_forearm_f1">
+        <inertial>
+            <mass value="0.0001"/>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <inertia ixx="0.0003" iyy="0.0003" izz="0.0003" ixy="0" ixz="0" iyz="0"/>
+        </inertial>
+    </link>
+
+<!--    <joint name="jright_forearm_rotz" type="revolute">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <parent link="RightForeArm_f1"/>
+        <child link="RightForeArm"/>
+        <dynamics damping="0.1" friction="0.0"/> 
+        <limit effort="30" velocity="1.0" lower="0" upper="2.53073" />
+        <axis xyz="0 0 1" />
+    </joint>
+-->
+
+     <joint name="jright_forearm_roty" type="revolute">
+        <origin xyz="0    0           0" rpy="0 0 0"/>
+        <parent link="right_forearm_f1"/>
+        <child link="right_forearm"/>
+<!--        <dynamics damping="0.1" friction="0.0"/> -->  
+        <limit effort="50" velocity="1.0" lower="-1.5708" upper="1.48353" />
+        <axis xyz="0 1 0" />
+    </joint>
+
+   <transmission name="trans_jright_forearm_roty">
+     <type>transmission_interface/SimpleTransmission</type>
+     <joint name="jright_forearm_roty">
+       <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+     </joint>
+     <actuator name="motor_jright_forearm_roty">
+       <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+       <mechanicalReduction>1</mechanicalReduction>
+     </actuator>
+   </transmission>
+
+
+<!-- **************** changes made with dummy link and joints at elbow end ***************************  -->
+   
+   <link name="right_forearm">  
+
+        <inertial>        
+           <mass value="1.244"/>
+           <origin xyz="0 0.111235 0" rpy="-1.5708 0 0" />
+           <inertia ixx="0.0052508" iyy="0.00023975" izz="0.0052508" ixy="0" ixz="0" iyz="0"/>
+        </inertial>
+
+        <collision>
+          <origin xyz="0 0.111235 0" rpy="-1.5708 0 0" />
+          <geometry>
+             <cylinder length="0.22247" radius="0.019633"/>
+          </geometry>
+        </collision>
+
+        <visual>
+          <origin xyz="0 0.111235 0" rpy="-1.5708 0 0" />   
+          <geometry>
+             <cylinder length="0.22247" radius="0.019633"/>
+          </geometry>
+        </visual>
+   </link>
+
+   <joint name="jright_wrist_rotx" type="revolute"> 
+     <axis xyz="1 0 0"/>
+     <limit effort="50" velocity="1.0" lower="-0.872665" upper="1.0472" /> 
+     <origin xyz="0 0.22247 0" rpy="0 -1.5708 0"/>
+     <parent link="right_forearm"/>
+     <child link="right_wrist_f1"/>
+   </joint>
+
+   <transmission name="trans_jright_wrist_rotx">
+     <type>transmission_interface/SimpleTransmission</type>
+     <joint name="jright_wrist_rotx">
+       <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+     </joint>
+     <actuator name="motor_jright_wrist_rotx">
+       <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+       <mechanicalReduction>1</mechanicalReduction>
+     </actuator>
+   </transmission>
+
+<!-- **************** changes made with dummy link and joints at wrist start ***************************  -->
+
+ <!--   <joint name="jRightWrist_rotx" type="revolute">
+        <origin xyz="7.7e-05    -0.22247           0" rpy="0 0 0"/>
+        <parent link="RightForeArm"/>
+        <child link="RightHand_f1"/>
+        <dynamics damping="0.1" friction="0.0"/>
+        <limit effort="30" velocity="1.0" lower="-0.872665" upper="1.0472" />
+        <axis xyz="1 0 0" />
+    </joint> -->
+
+    <link name="right_wrist_f1">
+        <inertial>
+            <mass value="0.0001"/>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <inertia ixx="0.0003" iyy="0.0003" izz="0.0003" ixy="0" ixz="0" iyz="0"/>
+        </inertial>
+    </link>
+
+    <joint name="jright_wrist_rotz" type="revolute">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <parent link="right_wrist_f1"/>
+        <child link="right_wrist"/>
+<!--        <dynamics damping="0.1" friction="0.0"/> -->
+        <limit effort="50" velocity="1.0" lower="-0.523599" upper="0.349066" />
+        <axis xyz="0 0 1" />
+    </joint>
+
+   <transmission name="trans_jright_wrist_rotz">
+     <type>transmission_interface/SimpleTransmission</type>
+     <joint name="jright_wrist_rotz">
+       <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+     </joint>
+     <actuator name="motor_jright_wrist_rotz">
+       <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+       <mechanicalReduction>1</mechanicalReduction>
+     </actuator>
+   </transmission>
+
+
+<!-- **************** changes made with dummy link and joints at wrist end ***************************  -->
+   
+   <link name="right_wrist">  
+
+        <inertial>        
+           <mass value="0.0492"/>
+           <origin xyz="0 0.0147495 0" rpy="-1.5708 0 0" />
+           <inertia ixx="0.00005448" iyy="0.000007111" izz="0.00005448" ixy="0" ixz="0" iyz="0"/>
+        </inertial>
+
+        <collision>
+          <origin xyz="0 0.0147495 0" rpy="-1.5708 0 0" />
+          <geometry>
+             <box size="0.029449 0.11145 0.029449"/>
+          </geometry>
+        </collision>
+
+        <visual>
+          <origin xyz="0 0.0147495 0" rpy="-1.5708 0 0" />   
+          <geometry>
+             <box size="0.029449 0.11145 0.029449"/>
+          </geometry>
+        </visual>
+
+   </link>
+
+
+   <joint name="jleft_grip_rhand" type="fixed"> 
+<!--     <axis xyz="0 0 1"/>
+      <limit effort="30" velocity="1.0" lower="-0.04" upper="0" />   -->
+     <origin xyz="0 0.029449 0.0410005" rpy="0 0 0"/>
+     <parent link="right_wrist"/>
+     <child link="left_grip_rhand"/>
+   </joint>
+
+<!--
+   <transmission name="trans_jleft_grip">
+     <type>transmission_interface/SimpleTransmission</type>
+     <joint name="jleft_grip">
+       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+     </joint>
+     <actuator name="motor_jleft_grip">
+       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+       <mechanicalReduction>1</mechanicalReduction>
+     </actuator>
+   </transmission>
+-->   
+
+
+  <link name="left_grip_rhand">
+
+        <inertial>        
+           <mass value="0.0492"/>
+           <origin xyz="0 0.055725 0" rpy="0 0 0" />
+           <inertia ixx="0.00005448" iyy="0.000007111" izz="0.00005448" ixy="0" ixz="0" iyz="0"/>
+        </inertial>
+
+        <collision>
+          <origin xyz="0 0.055725 0" rpy="0 0 0" />
+          <geometry>
+             <box size="0.029449 0.11145 0.029449"/>
+          </geometry>
+        </collision>
+  
+        <visual>
+          <origin xyz="0 0.055725 0" rpy="0 0 0" />   
+          <geometry>
+             <box size="0.029449 0.11145 0.029449"/>
+          </geometry>
+        </visual>
+   </link>
+
+   <joint name="jright_grip_rhand" type="prismatic"> 
+     <axis xyz="0 0 1"/>
+     <limit effort="30" velocity="0.2" lower="0" upper="0.04" />
+     <origin xyz="0 0.029449 -0.0410005" rpy="0 0 0"/>
+     <parent link="right_wrist"/>
+     <child link="right_grip_rhand"/>
+   </joint>
+
+   <transmission name="trans_jright_grip_rhand">
+     <type>transmission_interface/SimpleTransmission</type>
+     <joint name="jright_grip_rhand">
+       <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+     </joint>
+     <actuator name="motor_jright_grip_rhand">
+       <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+       <mechanicalReduction>1</mechanicalReduction>
+     </actuator>
+   </transmission>
+   
+   <link name="right_grip_rhand"> 
+
+        <inertial>        
+           <mass value="0.0492"/>
+           <origin xyz="0 0.055725 0" rpy="0 0 0" />
+           <inertia ixx="0.00005448" iyy="0.000007111" izz="0.00005448" ixy="0" ixz="0" iyz="0"/>
+        </inertial>
+
+        <collision>
+          <origin xyz="0 0.055725 0" rpy="0 0 0" />
+          <geometry>
+             <box size="0.029449 0.11145 0.029449"/>
+          </geometry>
+        </collision>
+ 
+        <visual>
+          <origin xyz="0 0.055725 0" rpy="0 0 0" />   
+          <geometry>
+             <box size="0.029449 0.11145 0.029449"/>
+          </geometry>
+        </visual>
+   </link>
+
+   <gazebo>
+      <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">  
+       <robotNamespace>/mhuman</robotNamespace> 
+       <legacyModeNS>true</legacyModeNS> 
+      </plugin>
+   </gazebo>
+
+   <gazebo>
+      <plugin name="gazebo_grasp_fix" filename="libgazebo_grasp_fix.so">
+          <arm>
+           <arm_name>right_arm</arm_name>
+           <palm_link>right_wrist</palm_link>
+           <gripper_link>right_grip_rhand</gripper_link>
+          </arm>   
+          <forces_angle_tolerance>100</forces_angle_tolerance>
+          <update_rate>4</update_rate>
+          <grip_count_threshold>4</grip_count_threshold>
+          <max_grip_count>8</max_grip_count>
+          <release_tolerance>0.005</release_tolerance>
+          <disable_collisions_on_attach>false</disable_collisions_on_attach>
+          <contact_topic>__default_topic__</contact_topic>
+      </plugin>
+    </gazebo>
+
+</robot>

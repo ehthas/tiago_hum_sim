@@ -1,0 +1,17 @@
+<launch>
+  <arg name="multi" default=""/>  
+
+  <!-- Robot Model -->   
+<!--  <param name="robot_description" command="$(find xacro)/xacro ** inorder '$(find humsub_proj)/urdf/humarm_comp.xacro'" /> 
+-->
+
+  <!-- Robot description -->
+  <param name="robot_description"
+    command="$(find xacro)/xacro --inorder
+    '$(find tiago_hum_sim)/urdf/human_comp.xacro'
+     $(arg multi)" />
+
+<!--           <rosparam command="load" file="$(find tiago_description)/config/collision/collision_parameters.yaml" />   -->
+</launch>
+
+
