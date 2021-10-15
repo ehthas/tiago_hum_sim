@@ -1013,10 +1013,11 @@
    </link>
 
    <gazebo>
-      <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">  
-       <robotNamespace>/mhuman</robotNamespace> 
-       <legacyModeNS>true</legacyModeNS> 
-      </plugin>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+        <robotSimType>pal_hardware_gazebo/PalHardwareGazebo</robotSimType>
+        <robotNamespace>/mhuman</robotNamespace>
+        <controlPeriod>0.001</controlPeriod>
+    </plugin>
    </gazebo>
 
    <gazebo>
